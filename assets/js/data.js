@@ -1,21 +1,16 @@
-/* =========================================================
-   SITE DATA
-   Edit this file to add, remove, or update projects, experience,
-   education, and contact links. Nothing else in the site needs
-   to change — index.html and main.js read from here.
-   ========================================================= */
+
 
 const SITE_DATA = {
 
   contact: {
-    // TODO: replace with real links before publishing
+
     email: "amanisirelkhatim1509@gmail.com",
     linkedin: "https://www.linkedin.com/in/amani-sirelkhatim-718857291/",
     github: "https://github.com/amani-sirelkhatim",
   },
 
   cv: {
-    // Drop your CV PDF at assets/cv/Amani-Sirelkhatim-CV.pdf and it will work as-is.
+    
     href: "assets/cv/Amani-Sirelkhatim-CV.pdf",
   },
 

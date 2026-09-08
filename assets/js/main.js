@@ -4,9 +4,6 @@
   const $ = (sel, ctx) => (ctx || document).querySelector(sel);
   const $$ = (sel, ctx) => Array.from((ctx || document).querySelectorAll(sel));
 
-  /* ---------------------------------------------------------
-     Mobile nav
-  --------------------------------------------------------- */
   const navToggle = $("#navToggle");
   const mobileMenu = $("#mobileMenu");
   function closeMenu() {
@@ -27,14 +24,10 @@
   });
   $$("#mobileMenu a").forEach((a) => a.addEventListener("click", closeMenu));
 
-  /* ---------------------------------------------------------
-     Footer year
-  --------------------------------------------------------- */
+
   $("#footerYear").textContent = `© ${new Date().getFullYear()}`;
 
-  /* ---------------------------------------------------------
-     Skills
-  --------------------------------------------------------- */
+
   const skillsGrid = $("#skillsGrid");
   SITE_DATA.skills.forEach((cat) => {
     const el = document.createElement("div");
@@ -49,9 +42,7 @@
     skillsGrid.appendChild(el);
   });
 
-  /* ---------------------------------------------------------
-     Experience timeline
-  --------------------------------------------------------- */
+
   const expTimeline = $("#experienceTimeline");
   SITE_DATA.experience.forEach((item) => {
     const el = document.createElement("div");
@@ -68,9 +59,7 @@
     expTimeline.appendChild(el);
   });
 
-  /* ---------------------------------------------------------
-     Education timeline
-  --------------------------------------------------------- */
+
   const eduTimeline = $("#educationTimeline");
   SITE_DATA.education.forEach((item) => {
     const el = document.createElement("div");
@@ -84,9 +73,7 @@
     eduTimeline.appendChild(el);
   });
 
-  /* ---------------------------------------------------------
-     Projects grid
-  --------------------------------------------------------- */
+
   const projectGrid = $("#projectGrid");
 
   function projectImgPath(project, file) {
@@ -156,9 +143,7 @@
 
   renderProjects("all");
 
-  /* ---------------------------------------------------------
-     Project modal
-  --------------------------------------------------------- */
+
   const modalOverlay = $("#projectModal");
   let currentProject = null;
 
@@ -212,9 +197,7 @@
     if (e.target === modalOverlay) closeProjectModal();
   });
 
-  /* ---------------------------------------------------------
-     Lightbox
-  --------------------------------------------------------- */
+
   const lightbox = $("#lightbox");
   const lightboxImg = $("#lightboxImg");
   let lightboxIndex = 0;
@@ -260,9 +243,7 @@
     }
   });
 
-  /* ---------------------------------------------------------
-     Contact links
-  --------------------------------------------------------- */
+
   const contactLinks = $("#contactLinks");
   const c = SITE_DATA.contact;
   const links = [
@@ -280,10 +261,7 @@
     )
     .join("");
 
-  /* ---------------------------------------------------------
-     Scroll reveal (single restrained pattern, respects
-     prefers-reduced-motion via CSS transition-duration override)
-  --------------------------------------------------------- */
+
   function observeReveals() {
     const items = $$(".reveal:not(.is-observed)");
     if (!("IntersectionObserver" in window)) {
@@ -308,9 +286,7 @@
   }
   observeReveals();
 
-  /* ---------------------------------------------------------
-     Hero SVG — one orchestrated draw-in on load
-  --------------------------------------------------------- */
+
   const prefersReduced = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
@@ -357,9 +333,7 @@ const sections = document.querySelectorAll("main section[id]");
 function updateActiveNav() {
   const scrollY = window.scrollY;
 
-  // =========================
-  // HOME
-  // =========================
+ 
   if (scrollY < 100) {
     navLinks.forEach(link => link.classList.remove("active"));
     homeLink.classList.add("active");
@@ -368,7 +342,7 @@ function updateActiveNav() {
 
   homeLink.classList.remove("active");
 
-  // Position where we consider a section "active"
+
   const activationPoint = scrollY + 180;
 
   let currentSection = null;
@@ -382,12 +356,12 @@ function updateActiveNav() {
     }
   });
 
-  // Remove active from all nav links
+
   navLinks.forEach(link => {
     link.classList.remove("active");
   });
 
-  // Activate matching link
+
   if (currentSection) {
     const activeLink = document.querySelector(
       `.nav-links a[href="#${currentSection.id}"]`
