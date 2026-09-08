@@ -613,7 +613,7 @@ footer p { color: var(--ink-faint); font-size: 0.85rem; }
 }
 
 .nav-links a.active {
-    color: #4fb8ac;
+    color: #7c3371;
 }
 
 .nav-links a.active::after {
