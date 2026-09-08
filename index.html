@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amani Sirelkhatim — Frontend, Flutter & Full-Stack Developer</title>
+<meta name="description" content="Portfolio of Amani Sirelkhatim Awad — frontend developer, Flutter engineer, and full-stack developer building mobile apps and internal systems for real organizations.">
+
+<meta property="og:title" content="Amani Sirelkhatim — Developer Portfolio">
+<meta property="og:description" content="Frontend developer, Flutter engineer, and full-stack developer. Mobile apps and internal systems built for real organizations.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="wrap">
+    <a href="#home" class="nav-mark"><span class="glyph">AS</span> Amani Sirelkhatim</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      
+    </div>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-outline">Contact</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#experience">Experience</a>
+  <a href="#skills">Skills</a>
+  <a href="#education">Education</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+  <a href="#contact" class="btn btn-primary">Get in touch</a>
+</div>
+
+<main id="home">
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <div class="hero-kicker"><span class="dot"></span> Available for new projects</div>
+        <h1>I turn ideas into <span class="last">working software.</span></h1>
+        <!-- <h1>I build software that <span class="last">solves real problems.</span></h1> -->
+        <p class="hero-role">Frontend developer and <strong>Flutter engineer</strong>, working toward full-stack development with <strong>Laravel</strong>.</p>
+        <p class="hero-pitch">I design and build thoughtful digital experiences that are practical, reliable, and built to last. I care about turning ideas and complex requirements into software that feels clear, purposeful, and easy to use.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View my work</a>
+          <a href="assets/cv/Amani-Sirelkhatim-CV.pdf" class="btn btn-outline" download>Download CV</a>
+          <a href="#contact" class="btn btn-ghost">Contact me →</a>
+        </div>
+        <!-- <div class="hero-meta">
+          <div><span class="num">6</span><span class="lbl">systems shipped or in production use</span></div>
+          <div><span class="num">1</span><span class="lbl">solo-built mobile app, adopted by a live company</span></div>
+          <div><span class="num">2</span><span class="lbl">Future University degrees, First Class &amp; 3.95 CGPA</span></div>
+        </div> -->
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg id="heroSvg" viewBox="0 0 420 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#232a35" stroke-width="1">
+            <line x1="60" y1="120" x2="210" y2="60"/>
+            <line x1="210" y1="60" x2="360" y2="130"/>
+            <line x1="60" y1="120" x2="60" y2="280"/>
+            <line x1="210" y1="60" x2="210" y2="230"/>
+            <line x1="360" y1="130" x2="360" y2="300"/>
+            <line x1="60" y1="280" x2="210" y2="230"/>
+            <line x1="210" y1="230" x2="360" y2="300"/>
+            <line x1="60" y1="280" x2="150" y2="390"/>
+            <line x1="210" y1="230" x2="230" y2="400"/>
+            <line x1="360" y1="300" x2="290" y2="410"/>
+            <line x1="150" y1="390" x2="230" y2="400"/>
+            <line x1="230" y1="400" x2="290" y2="410"/>
+          </g>
+          <g class="node-draw">
+            <circle cx="60" cy="120" r="5" fill="#4fb8ac"/>
+            <circle cx="210" cy="60" r="6.5" fill="#e2954f"/>
+            <circle cx="360" cy="130" r="5" fill="#4fb8ac"/>
+            <circle cx="60" cy="280" r="5" fill="#4fb8ac"/>
+            <circle cx="210" cy="230" r="7.5" fill="#4fb8ac"/>
+            <circle cx="360" cy="300" r="5" fill="#e2954f"/>
+            <circle cx="150" cy="390" r="5" fill="#e2954f"/>
+            <circle cx="230" cy="400" r="5" fill="#4fb8ac"/>
+            <circle cx="290" cy="410" r="5" fill="#e2954f"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="about">
+    <div class="wrap">
+      <div>
+        <div class="section-head">
+          <span class="section-index">01</span>
+          <h2>About</h2>
+        </div>
+        <p class="lede">I'm a developer from Sudan working across frontend, Flutter, and PHP/MySQL.</p>
+        <ul class="about-highlights">
+          <li>
+            <span class="mark">→</span>
+            <div>
+              <h4>Built a live production system, solo</h4>
+              <p>Designed and developed a Flutter and Supabase mobile app for Alyaraa Ltd end-to-end as my individual Master's project — the company is adopting it for daily operations.</p>
+            </div>
+          </li>
+          <li>
+            <span class="mark">→</span>
+            <div>
+              <h4>Maintain systems a university depends on</h4>
+              <p>KPI evaluation, and exam scheduling all run on PHP/MySQL systems I've built and continue to develop.</p>
+            </div>
+          </li>
+          <li>
+            <span class="mark">→</span>
+            <div>
+              <h4>Started in support, moved into building the systems</h4>
+              <p>Began at Future University's Center of Technical Services helping staff and students use the university's systems day to day — since then I've moved into building them.</p>
+            </div>
+          </li>
+          <li>
+            <span class="mark">→</span>
+            <div>
+              <h4>Currently going full-stack</h4>
+              <p>Finishing a Full-Stack Development Diploma focused on Laravel, on top of an MSc in Information Systems (Technology).</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <aside class="about-card">
+        <span class="cap">Currently</span>
+        <p>Finishing a Full-Stack Development Diploma in Laravel while maintaining the KPI, certificate, and exam-scheduling systems used inside The Future University, and taking on new Flutter and web projects.</p>
+        <p>Based in Sudan. Working in both Arabic and English for technical and formal documentation.</p>
+      </aside>
+    </div>
+  </section>
+
+  
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head is-amber">
+        <span class="section-index">03</span>
+        <h2>Experience</h2>
+      </div>
+      <p class="lede" style="margin-bottom: 40px;">My documented professional experience so far. The systems work below in Projects has continued alongside and since this role.</p>
+      <div class="timeline" id="experienceTimeline"></div>
+    </div>
+  </section>
+<!-- ============ SKILLS ============ -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-index">02</span>
+        <h2>Skills</h2>
+      </div>
+      <div class="skills-grid" id="skillsGrid"></div>
+    </div>
+  </section>
+  <!-- ============ EDUCATION ============ -->
+  <section id="education">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-index">04</span>
+        <h2>Education</h2>
+      </div>
+      <div class="timeline" id="educationTimeline"></div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head is-amber">
+        <span class="section-index">05</span>
+        <h2>Projects</h2>
+      </div>
+      <!-- <p class="lede" style="margin-bottom: 32px;">Six systems, ranging from a solo-built mobile app to internal university platforms built and maintained as part of a team. Open any card for the full case study.</p> -->
+      <div class="project-filters" id="projectFilters">
+        <button class="filter-btn is-active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="flutter">Flutter</button>
+        <button class="filter-btn" data-filter="web">Web &amp; Full-Stack</button>
+      </div>
+      <div class="project-grid" id="projectGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-panel">
+        <div>
+          <div class="section-head" style="margin-bottom: 0;">
+            <span class="section-index">06</span>
+            <h2>Let's work together</h2>
+          </div>
+          <p class="lede">Open to frontend, Flutter, and full-stack opportunities. The fastest way to reach me is email.</p>
+        </div>
+        <div class="contact-links" id="contactLinks"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Designed &amp; built by Amani Sirelkhatim Awad.</p>
+    <p id="footerYear"></p>
+  </div>
+</footer>
+
+<!-- ============ PROJECT MODAL ============ -->
+<div class="modal-overlay" id="projectModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    <span class="modal-cat" id="modalCat"></span>
+    <h2 id="modalTitle" ></h2>
+    <p class="modal-role" id="modalRole"></p>
+
+    <div class="modal-section">
+      <h4>Overview</h4>
+      <p id="modalOverview"></p>
+    </div>
+    <div class="modal-section">
+      <h4>My contribution</h4>
+      <p id="modalContribution"></p>
+    </div>
+    <div class="modal-section">
+      <h4>Features</h4>
+      <ul id="modalFeatures"></ul>
+    </div>
+    <div class="modal-section">
+      <h4>Technologies</h4>
+      <div class="modal-tags" id="modalTags"></div>
+    </div>
+    <div class="modal-section" id="modalGallerySection">
+      <h4>Screenshots</h4>
+      <div class="modal-gallery" id="modalGallery"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close image">✕</button>
+  <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous image">‹</button>
+  <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav next" id="lightboxNext" aria-label="Next image">›</button>
+</div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
