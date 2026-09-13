@@ -144,6 +144,176 @@
   renderProjects("all");
 
 
+  const STATUS_GLYPHS_SVG = `<svg class="sig" viewBox="0 0 18 12" aria-hidden="true"><path d="M1 9h2.1v3H1zM5.4 6.4h2.1V12H5.4zM9.8 3.8h2.1V12H9.8zM14.2 1.2h2.1V12h-2.1z"/></svg><svg class="wifi" viewBox="0 0 16 12" aria-hidden="true"><path d="M8 10.8 5.3 8a3.8 3.8 0 0 1 5.4 0zM8 4.3a7 7 0 0 0-5 2.1L1.3 4.5A9.5 9.5 0 0 1 8 1.7c2.6 0 5 1 6.7 2.8L13 6.4a7 7 0 0 0-5-2.1z"/></svg><svg class="batt" viewBox="0 0 27 13" aria-hidden="true"><rect x=".6" y=".6" width="21.8" height="11.8" rx="3.6" fill="none" stroke="currentColor" stroke-opacity=".42" stroke-width="1.2"/><rect x="2.2" y="2.2" width="16.5" height="8.6" rx="2.2"/><path d="M24.4 4.5c1.3.5 1.3 3.5 0 4z" fill-opacity=".42"/></svg>`;
+
+  function renderPhoneRail(container, project) {
+    container.className = "phone-rail-wrap";
+    container.innerHTML = `
+      <div class="phone-rail" tabindex="0" role="region" aria-label="App screens, scroll horizontally">
+        ${project.gallery
+          .map(
+            (g, i) => `
+          <figure class="phone-slot" data-index="${i}" tabindex="0" role="button" aria-label="View screenshot: ${g.caption}">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <div class="phone-status">
+                  <span class="clock">9:41</span>
+                  <span class="glyphs">${STATUS_GLYPHS_SVG}</span>
+                  <span class="island"></span>
+                </div>
+                <img src="${projectImgPath(project, g.file)}" alt="${g.caption}" loading="lazy" draggable="false">
+              </div>
+            </div>
+            <figcaption class="phone-caption"><b>${i + 1}</b>${g.caption}</figcaption>
+          </figure>`
+          )
+          .join("")}
+      </div>
+      <div class="phone-rail-track"><div class="phone-rail-thumb"></div></div>
+    `;
+
+    const rail = $(".phone-rail", container);
+    const track = $(".phone-rail-track", container);
+    const thumb = $(".phone-rail-thumb", container);
+
+    $$(".phone-slot", rail).forEach((slot) => {
+      const open = () => openLightbox(project, parseInt(slot.dataset.index, 10));
+      slot.addEventListener("click", open);
+      slot.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          open();
+        }
+      });
+    });
+
+    rail.addEventListener(
+      "wheel",
+      (e) => {
+        if (e.deltaY === 0 || e.shiftKey) return;
+        const max = rail.scrollWidth - rail.clientWidth;
+        if (max <= 0) return;
+        const next = rail.scrollLeft + e.deltaY;
+        if (next > 0 && next < max) {
+          rail.scrollLeft = next;
+          e.preventDefault();
+        }
+      },
+      { passive: false }
+    );
+
+    let down = false,
+      startX = 0,
+      startLeft = 0,
+      moved = 0;
+    rail.addEventListener("pointerdown", (e) => {
+      if (e.pointerType === "touch") return;
+      down = true;
+      moved = 0;
+      startX = e.clientX;
+      startLeft = rail.scrollLeft;
+      rail.classList.add("dragging");
+      rail.setPointerCapture(e.pointerId);
+    });
+    rail.addEventListener("pointermove", (e) => {
+      if (!down) return;
+      const dx = e.clientX - startX;
+      moved = Math.max(moved, Math.abs(dx));
+      rail.scrollLeft = startLeft - dx;
+    });
+    ["pointerup", "pointercancel"].forEach((evt) =>
+      rail.addEventListener(evt, () => {
+        down = false;
+        rail.classList.remove("dragging");
+      })
+    );
+    rail.addEventListener(
+      "click",
+      (e) => {
+        if (moved > 6) {
+          e.stopPropagation();
+          e.preventDefault();
+        }
+      },
+      true
+    );
+
+    function syncTrack() {
+      const max = rail.scrollWidth - rail.clientWidth;
+      const ratio = rail.clientWidth / rail.scrollWidth;
+      const tw = track.clientWidth;
+      const width = Math.max(32, Math.round(tw * ratio));
+      thumb.style.width = width + "px";
+      const travel = tw - width;
+      const pos = max > 0 ? (rail.scrollLeft / max) * travel : 0;
+      thumb.style.transform = `translateX(${Math.round(pos)}px)`;
+      track.style.visibility = max > 1 ? "visible" : "hidden";
+    }
+    rail.addEventListener("scroll", syncTrack, { passive: true });
+    window.addEventListener("resize", syncTrack);
+    requestAnimationFrame(syncTrack);
+
+    let tDown = false,
+      tStartX = 0,
+      tStartLeft = 0;
+    function trackTravel() {
+      return track.clientWidth - thumb.getBoundingClientRect().width;
+    }
+    thumb.addEventListener("pointerdown", (e) => {
+      tDown = true;
+      tStartX = e.clientX;
+      tStartLeft = rail.scrollLeft;
+      thumb.classList.add("held");
+      thumb.setPointerCapture(e.pointerId);
+      e.preventDefault();
+      e.stopPropagation();
+    });
+    thumb.addEventListener("pointermove", (e) => {
+      if (!tDown) return;
+      const travel = trackTravel();
+      if (travel <= 0) return;
+      const max = rail.scrollWidth - rail.clientWidth;
+      rail.scrollLeft = tStartLeft + ((e.clientX - tStartX) / travel) * max;
+    });
+    ["pointerup", "pointercancel"].forEach((evt) =>
+      thumb.addEventListener(evt, () => {
+        tDown = false;
+        thumb.classList.remove("held");
+      })
+    );
+    track.addEventListener("pointerdown", (e) => {
+      if (e.target === thumb) return;
+      const rect = track.getBoundingClientRect();
+      const width = thumb.getBoundingClientRect().width;
+      const travel = trackTravel();
+      if (travel <= 0) return;
+      const pos = Math.min(Math.max(e.clientX - rect.left - width / 2, 0), travel);
+      rail.scrollLeft = (pos / travel) * (rail.scrollWidth - rail.clientWidth);
+    });
+
+    rail.addEventListener("keydown", (e) => {
+      const slot = $(".phone-slot", rail);
+      if (!slot) return;
+      const step = slot.getBoundingClientRect().width + 26;
+      if (e.key === "ArrowRight") {
+        rail.scrollLeft += step;
+        e.preventDefault();
+      }
+      if (e.key === "ArrowLeft") {
+        rail.scrollLeft -= step;
+        e.preventDefault();
+      }
+      if (e.key === "Home") {
+        rail.scrollLeft = 0;
+        e.preventDefault();
+      }
+      if (e.key === "End") {
+        rail.scrollLeft = rail.scrollWidth;
+        e.preventDefault();
+      }
+    });
+  }
+
   const modalOverlay = $("#projectModal");
   let currentProject = null;
 
@@ -163,24 +333,28 @@
 
     const gallerySection = $("#modalGallerySection");
     const galleryEl = $("#modalGallery");
-    galleryEl.className = `modal-gallery ${project.galleryStyle === "landscape" ? "landscape" : ""}`;
     if (project.gallery.length === 0) {
       gallerySection.style.display = "none";
     } else {
       gallerySection.style.display = "";
-      galleryEl.innerHTML = project.gallery
-        .map(
-          (g, i) =>
-            `<button data-index="${i}" aria-label="View screenshot: ${g.caption}">
-               <img src="${projectImgPath(project, g.file)}" alt="${g.caption}" loading="lazy">
-             </button>`
-        )
-        .join("");
-      $$("button", galleryEl).forEach((btn) =>
-        btn.addEventListener("click", () =>
-          openLightbox(project, parseInt(btn.dataset.index, 10))
-        )
-      );
+      if (project.galleryStyle === "portrait") {
+        renderPhoneRail(galleryEl, project);
+      } else {
+        galleryEl.className = `modal-gallery ${project.galleryStyle === "landscape" ? "landscape" : ""}`;
+        galleryEl.innerHTML = project.gallery
+          .map(
+            (g, i) =>
+              `<button data-index="${i}" aria-label="View screenshot: ${g.caption}">
+                 <img src="${projectImgPath(project, g.file)}" alt="${g.caption}" loading="lazy">
+               </button>`
+          )
+          .join("");
+        $$("button", galleryEl).forEach((btn) =>
+          btn.addEventListener("click", () =>
+            openLightbox(project, parseInt(btn.dataset.index, 10))
+          )
+        );
+      }
     }
 
     modalOverlay.classList.add("is-open");

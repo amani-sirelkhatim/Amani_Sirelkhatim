@@ -39,6 +39,23 @@ const SITE_DATA = {
 
 experience: [
   {
+    date: "Nov 2024 – Feb 2025",
+    title: "Technical Support Engineer",
+    org: "Center of Technical Services, The Future University",
+    points: [
+      "Maintained, enhanced, and troubleshot internal university systems supporting academic and administrative operations.",
+      "Developed new web-based systems and features based on requirements from university departments.",
+      "Built PHP/MySQL solutions for managing university data, records, evaluations, and scheduling processes.",
+      "Designed database structures, queries, and data-management functionality for new and existing systems.",
+      "Analyzed existing workflows and translated operational requirements into practical software solutions.",
+      "Debugged and resolved application, database, and user-facing issues.",
+      "Implemented new functionality and improvements to existing systems and workflows.",
+      "Worked with university staff to gather requirements, test new functionality, and improve system usability."
+    ],
+    accent: "teal"
+  },
+  {
+    
     date: "04/2021 – 05/2023",
     title: "Middle Manager & Accountant",
     org: "Alyraa Ltd.",
@@ -66,38 +83,15 @@ experience: [
     badge: "Website Development"
   },
 
-  {
-    date: "Nov 2024 – Feb 2025",
-    title: "Technical Support Engineer",
-    org: "Center of Technical Services, The Future University",
-    points: [
-      "Maintained, enhanced, and troubleshot internal university systems supporting academic and administrative operations.",
-      "Developed new web-based systems and features based on requirements from university departments.",
-      "Built PHP/MySQL solutions for managing university data, records, evaluations, and scheduling processes.",
-      "Designed database structures, queries, and data-management functionality for new and existing systems.",
-      "Analyzed existing workflows and translated operational requirements into practical software solutions.",
-      "Debugged and resolved application, database, and user-facing issues.",
-      "Implemented new functionality and improvements to existing systems and workflows.",
-      "Worked with university staff to gather requirements, test new functionality, and improve system usability."
-    ],
-    accent: "teal"
-  }
+  
 ],
 
   education: [
-    
     {
-      date: "2016 – 2021",
-      degree: "B.Sc. (Honours), Information Technology — First Class",
-      org: "The Future University, Sudan",
-      detail: "CGPA 3.63 · Awarded 6 Feb 2021",
-      accent: "teal",
-    },
-     {
-      date: "Completed",
-      degree: "Mobile Dev — Flutter Diploma",
-      org: "KIMIT",
-      detail: "120 hours",
+      date: "In progress",
+      degree: "Full-Stack Development Diploma — Laravel",
+      org: "",
+      detail: "Currently completing",
       accent: "teal",
     },
     {
@@ -105,16 +99,24 @@ experience: [
       degree: "Master of Information System (Technology)",
       org: "The Future University, Sudan",
       detail: "CGPA 3.95 · Awarded 10 May 2026",
-      accent: "teal",
-    },
-    {
-      date: "In progress",
-      degree: "Full-Stack Development Diploma — Laravel",
-      org: "",
-      detail: "Currently completing",
       accent: "amber",
     },
-   
+     {
+      date: "Completed",
+      degree: "Mobile Dev — Flutter Diploma",
+      org: "KIMIT",
+      detail: "120 hours",
+      accent: "amber",
+    },
+    
+    {
+      date: "2016 – 2021",
+      degree: "B.Sc. (Honours), Information Technology — First Class",
+      org: "The Future University, Sudan",
+      detail: "CGPA 3.63 · Awarded 6 Feb 2021",
+      accent: "amber",
+    },
+    
   ],
 
   projects: [
