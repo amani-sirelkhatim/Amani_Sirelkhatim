@@ -118,7 +118,6 @@ experience: [
     },
     
   ],
-
   projects: [
     {
       id: "alyaraa",
@@ -126,19 +125,18 @@ experience: [
       filter: "flutter",
       title: "Construction Supply & Project Tracking App",
       org: "Alyaraa Engineering Co. Ltd",
-      summary: "A mobile app I designed and built solo to replace paper-based tracking of construction projects, materials, and equipment with a real-time system.",
+      logo: "logo.png",
+      summary: [
+        "Role-based mobile system for project managers, store managers, and admins",
+        "Real-time material & equipment request workflow, replacing paper-based tracking",
+        "Live project dashboards, timelines, and progress reporting",
+      ],
       role: "Solo designer & developer — individual Master's project",
       overview: "Alyaraa Ltd, a construction and engineering firm in Khartoum established in 1995, managed everything after tender approval — material requests, equipment tracking, delay reporting, day-to-day progress — through manual, paper-based processes with no real-time visibility. This app is a role-based mobile system for project managers, store managers, and admins that digitalizes project life-cycle tracking and supply management. Alyaraa Ltd is adopting it for use in day-to-day operations.",
-      contribution: "I designed and developed the entire application end-to-end, independently, as my individual Master's project — from requirements gathering through to a working system Alyaraa's team gave feedback on across Agile iterations.",
-      features: [
-        "Role-based access for project managers, store managers, and admins",
-        "Project dashboards with active/completed work, upcoming tasks, and delay flags",
-        "Project detail view broken into stages and tasks with progress tracking",
-        "Material and equipment request workflow, replacing paper-based requests",
-        "Real-time equipment availability checks before a request is raised",
-        "Calendar-based timeline across all projects",
-        "Store manager dashboard for pending approvals and low-inventory alerts",
-        "Reporting dashboard summarizing project health and average progress",
+      contribution: [
+        "Designed and developed the entire application end-to-end, independently, as my individual Master's project",
+        "Gathered requirements directly from the company",
+        "Delivered a working system through Agile iterations, incorporating Alyaraa's team feedback",
       ],
       tech: ["Flutter", "Dart", "Supabase", "PostgreSQL", "Agile"],
       gallery: [
@@ -155,23 +153,24 @@ experience: [
       ],
       galleryStyle: "portrait",
     },
-
     {
       id: "kpi",
       category: "Full-Stack System",
       filter: "web",
       title: "University KPI Management System",
       org: "University system",
-      summary: "A centralized platform that turns employee responsibilities into weighted KPIs, calculates performance scores, and locks finalized evaluation years.",
+      summary: [
+        "Converts employee responsibilities into weighted, measurable KPIs",
+        "Automated performance scoring with locked, auditable evaluation years",
+        "Multi-year comparison and printable reports for management",
+      ],
       role: "System designer & developer",
       overview: "A KPI management system used to monitor, evaluate, and report on employee performance across the university. It converts responsibilities into measurable KPIs, calculates weighted performance scores against defined criteria, and gives management printable reports and historical performance analysis across evaluation years.",
-      contribution: "I designed and developed the system, covering KPI definition and configuration, employee assignment, weighted score calculation, evaluation-period handling, and the reporting pages.",
-      features: [
-        "KPI definition, configuration, and assignment to employees",
-        "Weighted performance scoring and automated calculation",
-        "Evaluation periods with admin-controlled locking of finalized past years",
-        "Multi-year performance comparison for management",
-        "Printable KPI breakdown, department, and summary reports",
+      contribution: [
+        "Contributed to the front-end development by translating system requirements into clean HTML and CSS.",
+        "Built KPI definition, configuration, and employee assignment",
+        "Implemented weighted score calculation logic",
+        "Handled evaluation-period logic and built the reporting pages",
       ],
       tech: ["PHP", "MySQL", "SweetAlert2", "Prepared statements"],
       gallery: [
@@ -186,24 +185,22 @@ experience: [
       galleryStyle: "landscape",
     },
 
-   
-
     {
       id: "exam-scheduler",
       category: "Web Application",
       filter: "web",
       title: "Exam Scheduler",
       org: "University system",
-      summary: "A web page that replaces manually merging faculty exam timetables into one spreadsheet — upload a schedule and it's tagged and merged automatically.",
+      summary: [
+        "Upload a faculty's exam schedule, tagged by batch and semester",
+        "Automatic merging into one centralized master timetable",
+        "Live-updating Google Sheet, no manual rebuilding required",
+      ],
       role: "Developer",
       overview: "Consolidating exam schedules from different faculties into one master timetable used to mean manually copying each faculty's schedule into a shared spreadsheet. This page lets a user upload a faculty's schedule, tag it by faculty, batch, and semester, and have it processed and merged automatically into the university's general examination schedule, kept in a centralized Google Sheet.",
-      contribution: "I built this page end-to-end: the upload flow, faculty/batch/semester tagging, and the processing logic that merges each submission into the shared schedule.",
-      features: [
-        "Upload an individual faculty's exam schedule",
-        "Tag each upload by faculty, batch, and semester",
-        "Automatic processing and merging into the general schedule",
-        "Centralized output in a Google Sheet connected to the university's account",
-        "Continuous updates — new schedules merge in without rebuilding the sheet",
+      contribution: [
+        "Built the page end-to-end: upload flow and faculty/batch/semester tagging",
+        "Built the processing logic that merges each submission into the shared schedule",
       ],
       tech: ["JavaScript", "Google Sheets API"],
       gallery: [
@@ -219,16 +216,20 @@ experience: [
       filter: "web",
       title: "Voice Line — Support Case Documentation System",
       org: "University system · team project",
-      summary: "A system used by Zoom-based technical support agents to log student support calls and cases, built as part of a development team.",
+      summary: [
+        "Centralized case and call logging for Zoom-based support agents",
+        "Filterable, chart-based reporting connected to live data",
+        "Integrated with the university's student system",
+      ],
       role: "Contributed as part of a development team",
       overview: "Voice Line is used by the university's Zoom technical-support agents to document student interactions — calls, cases, inquiries, and the actions taken to resolve them — creating a centralized, traceable record the university can review and report on.",
-      contribution: "I contributed to Voice Line as part of a team rather than building it alone. My work covered building and structuring the system's HTML pages, designing the CSS/UI for layout and usability, developing reporting pages, connecting those reports to the database so they display real recorded data, and working on the integration with the university's student system to pull relevant student information. Other team members were responsible for other parts of the system.",
-      features: [
-        "Case and call logging for support agents",
-        "Filterable call/case reports with charts",
-        "Database-backed reporting pages",
-        "Integration with the university's student system",
-      ],
+     contribution: [
+"Contributed to building and structuring the system's HTML pages as part of the development team",
+"Contributed to the CSS/UI design, focusing on layout and usability",
+"Worked with the team on developing reporting pages and connecting them to the database for real data",
+"Contributed to the integration with the university's student system to retrieve student information",
+],
+
       tech: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
       gallery: [
         { file: "home-menu.webp", caption: "Home menu" },
@@ -248,16 +249,17 @@ experience: [
       filter: "web",
       title: "Z-Score Marksheet Analysis Tool",
       org: "University system",
-      summary: "A page that turns an uploaded marksheet into a live Z-score distribution, with adjustable target mean and standard deviation.",
+      summary: [
+        "Upload a marksheet and instantly get a Z-score distribution",
+        "Live-adjustable target mean and standard deviation",
+        "Downloadable results with limit validation",
+      ],
       role: "Developer",
       overview: "An analysis page where an authorized user uploads a student marksheet and the system calculates the mean, standard deviation, and each student's Z-score, then plots the score distribution. Target mean and standard deviation are adjustable, and results regenerate live, with validation to keep adjusted results within defined limits.",
-      contribution: "I built this page's upload flow, statistical calculations, and the interactive distribution graph.",
-      features: [
-        "Marksheet upload and automatic mark extraction",
-        "Mean, standard deviation, and per-student Z-score calculation",
-        "Live-adjustable target mean and standard deviation",
-        "Highest/lowest mark detection and limit validation",
-        "Downloadable Z-score results",
+      contribution: [
+        "Built the upload flow and mark extraction",
+        "Implemented the statistical calculations (mean, standard deviation, Z-score)",
+        "Built the interactive distribution graph",
       ],
       tech: ["JavaScript", "Chart rendering", "PHP"],
       gallery: [
@@ -266,4 +268,5 @@ experience: [
       galleryStyle: "landscape",
     },
   ],
+
 };

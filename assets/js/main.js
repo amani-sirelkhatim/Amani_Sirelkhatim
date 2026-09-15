@@ -92,19 +92,26 @@
       card.setAttribute("role", "button");
       card.setAttribute("aria-label", `Open case study: ${project.title}`);
 
-      const thumbs = project.gallery.slice(0, 2);
-      let thumbHtml;
-      if (thumbs.length === 0) {
-        thumbHtml = `<div class="project-thumb no-shots"><span>${project.category}</span></div>`;
-      } else {
-        thumbHtml = `<div class="project-thumb">
-          ${thumbs
-            .map(
-              (g) =>
-                `<img src="${projectImgPath(project, g.file)}" alt="${g.caption}" loading="lazy">`
-            )
-            .join("")}
+    
+        let thumbHtml;
+      if (project.logo) {
+        thumbHtml = `<div class="project-thumb project-thumb-logo">
+          <img src="${projectImgPath(project, project.logo)}" alt="${project.org} logo" loading="lazy">
         </div>`;
+      } else {
+        const thumbs = project.gallery.slice(0, 2);
+        if (thumbs.length === 0) {
+          thumbHtml = `<div class="project-thumb no-shots"><span>${project.category}</span></div>`;
+        } else {
+          thumbHtml = `<div class="project-thumb">
+            ${thumbs
+              .map(
+                (g) =>
+                  `<img src="${projectImgPath(project, g.file)}" alt="${g.caption}" loading="lazy">`
+              )
+              .join("")}
+          </div>`;
+        }
       }
 
       card.innerHTML = `
@@ -323,9 +330,11 @@
     $("#modalTitle").textContent = project.title;
     $("#modalRole").textContent = project.role;
     $("#modalOverview").textContent = project.overview;
-    $("#modalContribution").textContent = project.contribution;
-    $("#modalFeatures").innerHTML = project.features
-      .map((f) => `<li>${f}</li>`)
+    // $("#modalSummary").innerHTML = project.summary
+    //   .map((s) => `<li>${s}</li>`)
+    //   .join("");
+    $("#modalContribution").innerHTML = project.contribution
+      .map((c) => `<li>${c}</li>`)
       .join("");
     $("#modalTags").innerHTML = project.tech
       .map((t) => `<span class="tag">${t}</span>`)
